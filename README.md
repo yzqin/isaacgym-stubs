@@ -17,3 +17,17 @@ you may need to restart the IDE after `pip install` to re-indexing the IsaacGym 
 pip3 install git+https://github.com/yzqin/isaacgym-stubs.git
 ```
 
+### Demo
+
+**PyCharm**
+
+![PyCharm Demo](files/pycharm.gif)
+
+**VsCode**
+
+
+### Troubleshooting
+
+If you are a PyCharm/CLion user and still cannot achieve code completion after performing the pip install, you could
+consider installing the original IsaacGym library by using `pip install .` instead of `pip install -e .` in the
+`IsaacGym_Preview_4_Package/isaacgym/python/` directory.
