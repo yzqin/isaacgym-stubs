@@ -19,11 +19,12 @@ pip3 install git+https://github.com/yzqin/isaacgym-stubs.git
 
 ### Demo
 
-**PyCharm**
-
-![PyCharm Demo](files/pycharm.gif)
-
 **VsCode**
+![VsCode Demo](files/vscode.gif)
+
+
+**PyCharm**
+![PyCharm Demo](files/pycharm.gif)
 
 
 ### Troubleshooting
