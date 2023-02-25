@@ -1,18 +1,22 @@
 Isaac Gym Python Stubs for Code Completion
 ==========================================
 
-Code completion for IsaacGym with one line `pip install`, even if without IsaacGym itself.
+Enable code completion for IsaacGym simply with `pip install isaacgym-stubs`, even without IsaacGym itself!
 
 ```bash
-pip3 install git+https://github.com/yzqin/isaacgym-stubs.git
+# Install from PyPi
+pip3 install isaacgym-stubs
+
+# Alternatively, install from Github
+# pip3 install git+https://github.com/yzqin/isaacgym-stubs.git
 ```
 
-Depending on which IDE you are using, sometimes you may need to restart the IDE after `pip install` for re-indexing.
-
-The magic of `stub` is that you even **do not need to pip install IsaacGym itself** to write the code.
-For example, you may need to run IsaacGym on server for training but develop the code on your MacBook.
-IsaacGym does not support Mac. But you can still install this repo and get smooth code completion to write IsaacGym
+The magic of `stub` is that you even **do not need to pip install IsaacGym itself**.
+For example, you may need to run IsaacGym on server for training but develop the code on the MacBook.
+IsaacGym may not support Mac. But you can still install this repo and get smooth code completion to write IsaacGym
 code on that MacBook!
+
+Depending on which IDE you are using, sometimes you may need to restart the IDE after `pip install` for re-indexing.
 
 ### Demo
 
@@ -24,7 +28,7 @@ code on that MacBook!
 
 ![PyCharm Demo](files/pycharm.gif)
 
-### What Does This Repo Do
+### Overview
 
 This repository contains the `pyi` stub for the IsaacGym library, which can be used for code completion and type
 checking.

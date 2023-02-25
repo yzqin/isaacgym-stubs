@@ -1,0 +1,20 @@
+[tool.black]
+line-length = 88  # Default.
+
+[project]
+name = "isaacgym-stubs"
+version = "1.0rc4"
+authors = [
+    { name = "Yuzhe Qin", email = "y1qin@ucsd.edu" },
+]
+description = "Isaac Gym Python Stubs for Code Completion"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yzqin/isaacgym-stubs"
