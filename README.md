@@ -1,7 +1,7 @@
 Isaac Gym Python Stubs for Code Completion
 ==========================================
 
-Code completion for IsaacGym with one line `pip install`, even if you do not install IsaacGym itself.
+Code completion for IsaacGym with one line `pip install`, even if without IsaacGym itself.
 
 ```bash
 pip3 install git+https://github.com/yzqin/isaacgym-stubs.git
