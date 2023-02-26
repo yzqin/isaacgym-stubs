@@ -12,11 +12,10 @@ pip3 install isaacgym-stubs
 ```
 
 The magic of `stub` is that you even **do not need to pip install IsaacGym itself**.
-For example, you may need to run IsaacGym on server for training but develop the code on the MacBook.
-IsaacGym may not support Mac. But you can still install this repo and get smooth code completion to write IsaacGym
-code on that MacBook!
 
-Depending on which IDE you are using, sometimes you may need to restart the IDE after `pip install` for re-indexing.
+For example, you may want to run IsaacGym on server but develop the code on a MacBook.
+IsaacGym may not support Mac. But you can still install this repo on MacBook and get smooth code completion during
+development!
 
 ### Demo
 
@@ -35,3 +34,6 @@ checking.
 According to the guidelines outlined in [PEP-561](https://peps.python.org/pep-0561/), Python stub files contain only
 type information and no runtime code.
 The `stub` in this repo is generated based on IsaacGym version `1.0rc4`.
+
+### Troubleshooting
+Depending on which IDE you are using, sometimes you may need to restart the IDE after `pip install` for re-indexing.
