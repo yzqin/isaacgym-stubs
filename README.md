@@ -1,4 +1,6 @@
 Isaac Gym Python Stubs for Code Completion
+
+[![PyPI version](https://badge.fury.io/py/isaacgym-stubs.svg)](https://badge.fury.io/py/isaacgym-stubs)
 ==========================================
 
 Enable code completion for IsaacGym simply with `pip install isaacgym-stubs`, even without IsaacGym itself!
@@ -36,4 +38,10 @@ type information and no runtime code.
 The `stub` in this repo is generated based on IsaacGym version `1.0rc4`.
 
 ### Troubleshooting
+
 Depending on which IDE you are using, sometimes you may need to restart the IDE after `pip install` for re-indexing.
+
+### How to Generate This `pyi`
+
+See [here](./STUB.md) for more explanation.
+
