@@ -15,7 +15,6 @@ AXIS_Y: int
 AXIS_Z: int
 CC_ALL_SUBSTEPS: ContactCollection
 CC_LAST_SUBSTEP: ContactCollection
-CC_NEVER: ContactCollection
 COMPUTE_PER_FACE: MeshNormalMode
 COMPUTE_PER_VERTEX: MeshNormalMode
 DEFAULT_VIEWER_HEIGHT: int
@@ -179,7 +178,6 @@ MOUSE_SCROLL_RIGHT: MouseInput
 MOUSE_SCROLL_UP: MouseInput
 RIGID_BODY_DISABLE_GRAVITY: int
 RIGID_BODY_DISABLE_SIMULATION: int
-RIGID_BODY_ENABLE_GYROSCOPIC_FORCES: int
 RIGID_BODY_NONE: int
 SIM_FLEX: SimType
 SIM_PHYSX: SimType
@@ -235,7 +233,6 @@ class AssetOptions:
     default_dof_drive_mode: int
     density: float
     disable_gravity: bool
-    enable_gyroscopic_forces: bool
     fix_base_link: bool
     flip_visual_attachments: bool
     linear_damping: float
@@ -338,7 +335,6 @@ class ContactCollection:
     __members__: ClassVar[dict] = ...  # read-only
     CC_ALL_SUBSTEPS: ClassVar[ContactCollection] = ...
     CC_LAST_SUBSTEP: ClassVar[ContactCollection] = ...
-    CC_NEVER: ClassVar[ContactCollection] = ...
     __entries: ClassVar[dict] = ...
 
     def __init__(self, arg0: int) -> None: ...
@@ -547,14 +543,6 @@ class ForceSensor:
     def get_global_index(self) -> int: ...
 
 
-class ForceSensorProperties:
-    enable_constraint_solver_forces: bool
-    enable_forward_dynamics_forces: bool
-    use_world_frame: bool
-
-    def __init__(self) -> None: ...
-
-
 class Gym:
     def __init__(self, *args, **kwargs) -> None: ...
 
@@ -582,8 +570,6 @@ class Gym:
 
     def add_ground(self, sim: Sim, params: PlaneParams) -> None: ...
 
-    def add_heightfield(self, arg0: Sim, arg1: numpy.ndarray[int16], arg2: HeightFieldParams) -> None: ...
-
     @overload
     def add_lines(self, arg0: Viewer, arg1: Env, arg2: int, arg3: numpy.ndarray[float32],
                   arg4: numpy.ndarray[float32]) -> None: ...
@@ -591,9 +577,6 @@ class Gym:
     @overload
     def add_lines(self, arg0: Viewer, arg1: Env, arg2: int, arg3: numpy.ndarray[Vec3],
                   arg4: numpy.ndarray[Vec3]) -> None: ...
-
-    def add_triangle_mesh(self, arg0: Sim, arg1: numpy.ndarray[float32], arg2: numpy.ndarray[uint32],
-                          arg3: TriangleMeshParams) -> None: ...
 
     def apply_actor_dof_efforts(self, arg0: Env, arg1: int, arg2: numpy.ndarray[float32]) -> bool: ...
 
@@ -625,8 +608,6 @@ class Gym:
 
     def create_aggregate(self, arg0: Env, arg1: List[int]) -> bool: ...
 
-    def create_asset_force_sensor(self, *args, **kwargs) -> Any: ...
-
     def create_box(self, sim: Sim, width: float, height: float, depth: float, options: AssetOptions = ...) -> Asset: ...
 
     def create_camera_sensor(self, arg0: Env, arg1: CameraProperties) -> int: ...
@@ -636,6 +617,8 @@ class Gym:
     def create_cloth_grid(self, arg0: Sim, arg1: int, arg2: int, arg3: float, arg4: float) -> Asset: ...
 
     def create_env(self, arg0: Sim, arg1: Vec3, arg2: Vec3, arg3: int) -> Env: ...
+
+    def create_force_sensor(self, *args, **kwargs) -> Any: ...
 
     def create_performance_timers(self, arg0: Sim) -> int: ...
 
@@ -745,7 +728,7 @@ class Gym:
 
     def get_actor_dof_dict(self, arg0: Env, arg1: int) -> Dict[str, int]: ...
 
-    def get_actor_dof_forces(self, arg0: Env, arg1: int) -> numpy.ndarray[numpy.float32]: ...
+    def get_actor_dof_forces(self, arg0: Env, arg1: int) -> numpy.ndarray[float32]: ...
 
     def get_actor_dof_frames(self, arg0: Env, arg1: int) -> numpy.ndarray[DofFrame]: ...
 
@@ -766,10 +749,6 @@ class Gym:
     def get_actor_fixed_tendon_joint_coefficients(self, arg0: Env, arg1: int, arg2: int) -> List[float]: ...
 
     def get_actor_fixed_tendon_joint_name(self, arg0: Env, arg1: int, arg2: int, arg3: int) -> str: ...
-
-    def get_actor_force_sensor(self, arg0: Env, arg1: int, arg2: int) -> ForceSensor: ...
-
-    def get_actor_force_sensor_count(self, arg0: Env, arg1: int) -> int: ...
 
     def get_actor_handle(self, arg0: Env, arg1: int) -> int: ...
 
@@ -893,11 +872,11 @@ class Gym:
 
     def get_camera_image_gpu_tensor(self, arg0: Sim, arg1: Env, arg2: int, arg3: ImageType) -> object: ...
 
-    def get_camera_proj_matrix(self, arg0: Sim, arg1: Env, arg2: int) -> numpy.ndarray[numpy.float32]: ...
+    def get_camera_proj_matrix(self, arg0: Sim, arg1: Env, arg2: int) -> numpy.ndarray[float32]: ...
 
     def get_camera_transform(self, arg0: Sim, arg1: Env, arg2: int) -> Transform: ...
 
-    def get_camera_view_matrix(self, arg0: Sim, arg1: Env, arg2: int) -> numpy.ndarray[numpy.float32]: ...
+    def get_camera_view_matrix(self, arg0: Sim, arg1: Env, arg2: int) -> numpy.ndarray[float32]: ...
 
     def get_dof_frame(self, arg0: Env, arg1: int) -> DofFrame: ...
 
@@ -1216,21 +1195,6 @@ class Gym:
     def write_camera_image_to_file(self, arg0: Sim, arg1: Env, arg2: int, arg3: ImageType, arg4: str) -> None: ...
 
     def write_viewer_image_to_file(self, arg0: Viewer, arg1: str) -> None: ...
-
-
-class HeightFieldParams:
-    column_scale: float
-    dynamic_friction: float
-    nbColumns: int
-    nbRows: int
-    restitution: float
-    row_scale: float
-    segmentation_id: int
-    static_friction: float
-    transform: Transform
-    vertical_scale: float
-
-    def __init__(self) -> None: ...
 
 
 class ImageType:
@@ -1849,10 +1813,8 @@ class RigidContact:
 
 class RigidShapeProperties:
     compliance: float
-    contact_offset: float
     filter: int
     friction: float
-    rest_offset: float
     restitution: float
     rolling_friction: float
     thickness: float
@@ -2159,18 +2121,6 @@ class Transform:
     def __setstate__(self, arg0: tuple) -> None: ...
 
 
-class TriangleMeshParams:
-    dynamic_friction: float
-    nb_triangles: int
-    nb_vertices: int
-    restitution: float
-    segmentation_id: int
-    static_friction: float
-    transform: Transform
-
-    def __init__(self) -> None: ...
-
-
 class UpAxis:
     __members__: ClassVar[dict] = ...  # read-only
     UP_AXIS_Y: ClassVar[UpAxis] = ...
@@ -2370,7 +2320,7 @@ class Viewer:
     def __init__(self, *args, **kwargs) -> None: ...
 
 
-def acquire_gym(*args, **kwargs) -> Gym: ...
+def acquire_gym(*args, **kwargs) -> Any: ...
 
 
 def carb_init(config_str: str = ...) -> bool: ...
@@ -2380,11 +2330,11 @@ def cross(*args, **kwargs) -> Any: ...
 
 
 @overload
-def dot(arg0, arg1) -> numpy.ndarray[numpy.float32]: ...
+def dot(arg0, arg1) -> numpy.ndarray[float32]: ...
 
 
 @overload
-def dot(arg0, arg1) -> numpy.ndarray[numpy.float32]: ...
+def dot(arg0, arg1) -> numpy.ndarray[float32]: ...
 
 
 def eulers_to_quats_zyx(*args, **kwargs) -> Any: ...
