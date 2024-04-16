@@ -3,7 +3,7 @@ line-length = 88  # Default.
 
 [project]
 name = "isaacgym-stubs"
-version = "1.0rc4"
+version = "1.0rc3"
 authors = [
     { name = "Yuzhe Qin", email = "y1qin@ucsd.edu" },
 ]

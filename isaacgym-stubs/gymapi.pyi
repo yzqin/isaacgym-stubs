@@ -179,7 +179,6 @@ MOUSE_SCROLL_RIGHT: MouseInput
 MOUSE_SCROLL_UP: MouseInput
 RIGID_BODY_DISABLE_GRAVITY: int
 RIGID_BODY_DISABLE_SIMULATION: int
-RIGID_BODY_ENABLE_GYROSCOPIC_FORCES: int
 RIGID_BODY_NONE: int
 SIM_FLEX: SimType
 SIM_PHYSX: SimType
@@ -235,7 +234,6 @@ class AssetOptions:
     default_dof_drive_mode: int
     density: float
     disable_gravity: bool
-    enable_gyroscopic_forces: bool
     fix_base_link: bool
     flip_visual_attachments: bool
     linear_damping: float
@@ -1849,10 +1847,8 @@ class RigidContact:
 
 class RigidShapeProperties:
     compliance: float
-    contact_offset: float
     filter: int
     friction: float
-    rest_offset: float
     restitution: float
     rolling_friction: float
     thickness: float
@@ -2370,7 +2366,7 @@ class Viewer:
     def __init__(self, *args, **kwargs) -> None: ...
 
 
-def acquire_gym(*args, **kwargs) -> Gym: ...
+def acquire_gym(*args, **kwargs) -> Any: ...
 
 
 def carb_init(config_str: str = ...) -> bool: ...
