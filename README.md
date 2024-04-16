@@ -6,8 +6,14 @@ Isaac Gym Python Stubs for Code Completion
 Enable code completion for IsaacGym simply with `pip install isaacgym-stubs`, even without IsaacGym itself!
 
 ```bash
-# Install from PyPi
-pip3 install isaacgym-stubs
+# Install from PyPi for the latest 1.0rc4 version (preview 4)
+pip3 install isaacgym-stubs 
+
+# Install it for other IsaacGym version, e.g. preview 3
+pip3 install isaacgym_stubs==1.0rc3
+
+# Or preview 2
+pip3 install isaacgym_stubs==1.0rc2
 
 # Alternatively, install from Github
 # pip3 install git+https://github.com/yzqin/isaacgym-stubs.git
