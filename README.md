@@ -57,7 +57,13 @@ According to the guidelines outlined in [PEP-561](https://peps.python.org/pep-05
 type information and no runtime code.
 The `stub` in this repo is generated based on IsaacGym version `1.0rc4`.
 
-### How to Generate This `pyi`
+### Generating Enhanced `pyi` Files
 
-See [here](./STUB.md) for more explanation.
+The base `.pyi` files are typically created using tools like `mypy` or `pybind11-stubgen`. For improved
+documentation, [Lai Wei](https://github.com/I-am-Future) has developed
+an [automated script](https://github.com/I-am-Future/isaacgym-stubs-enhanced/blob/enhanced/enhance-pyi.ipynb) that
+extracts information from IsaacGym
+documentation to produce more descriptive and useful `.pyi` files. For additional information, refer
+to [issue #2](https://github.com/yzqin/isaacgym-stubs/issues/2).
+
 
